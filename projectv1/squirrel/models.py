@@ -1,23 +1,13 @@
 # Create your models here.
 from django.db import models
-from django.utils.translation import gettext as _
 
 class Squirrel(models.Model):
-    lat = models.FloatField(
-        help_text = _('Latitude'),
-        blank = True,
-        null = True,
-    )
+    lat = models.FloatField()
     
-    lon = models.FloatField(
-        help_text = _('Longitude'),
-        blank = True,
-        null = True,
-    )
+    lon = models.FloatField()
     
-    squirrel_id = models.CharField(
-        max_length = 100,
-        help_text = _('Unique Squirrel ID'),
+    squirrel_id=models.CharField(
+        max_length=100,
     )
     
     PM = 'PM'
@@ -29,12 +19,9 @@ class Squirrel(models.Model):
     shift = models.CharField(
         max_length=16,
         choices=SHIFT_CHOICES,
-        default=AM,
     )
     
-    date = models.DateField(
-        help_text = _('Date'),
-    )
+    date = models.DateField()
     
     ADULT = 'Adult'
     JUVENILE = 'Juvenile' 
@@ -45,8 +32,6 @@ class Squirrel(models.Model):
     age = models.CharField(
         max_length=16,
         choices=AGE_CHOICES,
-        blank = True,
-        null = True,
     )
     
     GRAY = 'Gray'
@@ -81,79 +66,37 @@ class Squirrel(models.Model):
         max_length = 200,
         blank = True,
         null = True,
-        help_text = _('specific location of squirrel'),
     )
     
-    running = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    running = models.BooleanField(null=True)
     
-    chasing = models.BooleanField(
-        blank = True,
-        null = True,    
-    )
+    chasing = models.BooleanField(null=True)
     
-    climbing = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    climbing = models.BooleanField(null=True)
     
-    eating = models.BooleanField(
-        blank = True,
-        null = True,
-    )
-    
-    foraging = models.BooleanField(
-        blank = True,
-        null = True,
-    )
-    
+    eating = models.BooleanField(null=True)
+
+    foraging = models.BooleanField(null=True)
+ 
     other_activities = models.CharField(
         max_length = 200,
-        blank = True,
-        null = True,
     )
     
-    kuks = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    kuks = models.BooleanField(null=True)
+ 
+    quaas = models.BooleanField(null=True)
     
-    quaas = models.BooleanField(
-        blank = True,
-        null = True, 
-    )   
-    
-    moans = models.BooleanField(
-        blank = True,
-        null = True, 
-    )
+    moans = models.BooleanField(null=True)
 
-    tail_flags = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    tail_flags = models.BooleanField(null=True)
 
-    tail_twitches = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    tail_twitches = models.BooleanField(null=True)
+
+    approaches = models.BooleanField(null=True)
+
+    indifferent = models.BooleanField(null=True)
     
-    approaches = models.BooleanField(
-        blank = True,
-        null = True,
-    )
-    
-    indifferent = models.BooleanField(
-        blank = True,
-        null = True,
-    )
-    
-    runs_from = models.BooleanField(
-        blank = True,
-        null = True,
-    )
+    runs_from = models.BooleanField(null=True)
     
     def __str__(self):
-        return squirrel_id
+        return self.squirrel_id
